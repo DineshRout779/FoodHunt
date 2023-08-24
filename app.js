@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
 const heading = React.createElement(
   'h1',
   { id: 'heading' },
@@ -6,11 +9,7 @@ const heading = React.createElement(
 
 const child = React.createElement('div', {}, heading);
 
-const parent = React.createElement('div', { id: 'parent' }, [
-  child,
-  child,
-  child,
-]);
+const parent = React.createElement('div', { id: 'parent' }, child);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
