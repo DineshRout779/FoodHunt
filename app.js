@@ -1,16 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+//  React Element
 const heading = React.createElement(
   'h1',
   { id: 'heading' },
   'Hello from React!'
 );
 
-const child = React.createElement('div', {}, heading);
+// JSX Element
+const Slogan = <p>Taught by Akshay Saini</p>;
 
-const parent = React.createElement('div', { id: 'parent' }, child);
+// React component(class or functional) - that returns a JSX Element
+const App = () => {
+  return (
+    <>
+      <h1>Namaste React 🚀</h1>
+      {Slogan}
+    </>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(parent);
+root.render(<App />);
