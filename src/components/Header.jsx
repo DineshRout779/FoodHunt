@@ -2,6 +2,7 @@ import Logo from './Logo';
 import {
   BuildingOfficeIcon,
   HomeIcon,
+  MagnifyingGlassIcon,
   MapPinIcon,
   PhoneIcon,
   ShoppingBagIcon,
@@ -15,12 +16,20 @@ const Header = () => {
           <Logo />
 
           <p className='text-sm flex items-center gap-1'>
-            <MapPinIcon className='w-4 h-4 text-gray-700' /> Location:
+            <MapPinIcon className='w-4 h-4 text-gray-700' />
             Bhubaneswar, Odisha
           </p>
         </div>
 
-        <ul className='flex gap-4 items-center text-zinc-700'>
+        <ul className='text-zinc-700 hidden md:flex gap-4 items-center'>
+          <li>
+            <a
+              href='#'
+              className='p-2 px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
+            >
+              <MagnifyingGlassIcon className='w-4 h-4 text-gray-700' /> Search
+            </a>
+          </li>
           <li>
             <a
               href='#'
@@ -54,6 +63,12 @@ const Header = () => {
             </a>
           </li>
         </ul>
+        <a
+          href='#'
+          className='bg-orange-400 text-white p-2 px-4 rounded-md flex items-center gap-2'
+        >
+          Login
+        </a>
       </div>
     </header>
   );
