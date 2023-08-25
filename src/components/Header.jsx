@@ -9,7 +9,7 @@ import {
 
 const Header = () => {
   return (
-    <header className='sticky top-0 bg-white z-50 py-4 border-b shadow-sm border-gray-100 mb-8'>
+    <header className='sticky top-0 bg-white z-50 py-4 border-b shadow-sm border-gray-100'>
       <div className='container-max flex justify-between items-center'>
         <div className='flex items-center gap-4'>
           <Logo />
@@ -20,7 +20,7 @@ const Header = () => {
           </p>
         </div>
 
-        <ul className='flex gap-4 items-center'>
+        <ul className='flex gap-4 items-center text-zinc-700'>
           <li>
             <a
               href='#'

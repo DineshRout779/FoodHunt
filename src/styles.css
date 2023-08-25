@@ -27,16 +27,26 @@ a {
     @apply text-lg font-bold text-gray-900;
   }
 }
-/* 
-.card-img::after {
-  border: 1px solid yellow;
-  content: '';
+
+.overlay-container {
+  position: relative;
+}
+
+.overlay {
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.7) 10%,
+    rgba(0, 0, 0, 0) 90%
+  ); /* Black see-through */
+  color: #f1f1f1;
   width: 100%;
-  height: 40px;
-  background-color: rgba(0, 0, 0, 0.367);
-  z-index: 100;
-} */
+  transition: 0.5s ease;
+  opacity: 1;
+  color: white;
+  font-size: 20px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}

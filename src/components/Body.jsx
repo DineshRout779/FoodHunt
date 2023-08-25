@@ -14,9 +14,14 @@ const Body = () => {
           `https://swiggyapiwrapper.dineshrout.repl.co/api/restaurants`
         );
 
-        // console.log(data);
+        console.log(
+          data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
+        );
+
         setRestaurants(
-          data?.data?.cards[3]?.card?.card?.gridElements?.restaurants
+          data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
         );
       } catch (err) {
         console.log(err.response);
@@ -29,9 +34,9 @@ const Body = () => {
   console.log(isLoading, restaurants);
 
   return (
-    <div>
+    <div className='bg-[#fcfcfc] relative py-8'>
       {/* search bar */}
-      <div className='flex gap-4 max-w-[560px] mx-auto w-full'>
+      <div className='flex gap-4 max-w-[560px] w-[95%] mx-auto'>
         <input
           type='search'
           name='search'
