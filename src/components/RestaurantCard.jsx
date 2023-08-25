@@ -1,10 +1,14 @@
+import { Link } from 'react-router-dom';
 import { StarIcon } from '@heroicons/react/24/solid';
 import { CDN_URL } from '../utils/constants';
 
 const RestaurantCard = ({ restaurant }) => {
   const { info } = restaurant;
   return (
-    <div>
+    <Link
+      to={`/restaurants/${restaurant.info.id}`}
+      className='hover:scale-95 transition ease-in-out duration-300'
+    >
       <div className='overlay-container'>
         <img
           src={CDN_URL + info.cloudinaryImageId}
@@ -41,7 +45,7 @@ const RestaurantCard = ({ restaurant }) => {
       </p>
 
       <p className='text-zinc-600'>{info.locality}</p>
-    </div>
+    </Link>
   );
 };
 

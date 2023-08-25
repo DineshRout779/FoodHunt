@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   font-family: 'Inter', sans-serif;
 }
@@ -20,11 +24,11 @@ a {
   .container-max {
     @apply container max-w-[1080px] w-[95%] mx-auto;
   }
-  .select2-search {
-    @apply border border-gray-300 rounded;
+  .container-md {
+    @apply container max-w-[768px] w-[95%] mx-auto;
   }
-  .select2-results__group {
-    @apply text-lg font-bold text-gray-900;
+  .flex-center {
+    @apply flex justify-center items-center;
   }
 }
 

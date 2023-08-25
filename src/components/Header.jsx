@@ -7,6 +7,7 @@ import {
   PhoneIcon,
   ShoppingBagIcon,
 } from '@heroicons/react/24/solid';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -21,54 +22,59 @@ const Header = () => {
           </p>
         </div>
 
-        <ul className='text-zinc-700 hidden md:flex gap-4 items-center'>
+        <ul className='text-zinc-700 ml-auto flex gap-2 md:gap-4 items-center'>
           <li>
-            <a
-              href='#'
-              className='p-2 px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
+            <Link
+              to='/search'
+              className='p-2 md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
             >
-              <MagnifyingGlassIcon className='w-4 h-4 text-gray-700' /> Search
-            </a>
+              <MagnifyingGlassIcon className='w-4 h-4 text-gray-700' />{' '}
+              <p className='hidden md:block'>Search</p>
+            </Link>
           </li>
           <li>
-            <a
-              href='#'
-              className='p-2 px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
+            <Link
+              to='/'
+              className='p-2 md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
             >
-              <HomeIcon className='w-4 h-4 text-gray-700' /> Home
-            </a>
+              <HomeIcon className='w-4 h-4 text-gray-700' />{' '}
+              <p className='hidden md:block'>Home</p>
+            </Link>
           </li>
           <li>
-            <a
-              href='#'
-              className='p-2 px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
+            <Link
+              to='/about'
+              className='p-2 md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
             >
-              <BuildingOfficeIcon className='w-4 h-4 text-gray-700' /> About
-            </a>
+              <BuildingOfficeIcon className='w-4 h-4 text-gray-700' />{' '}
+              <p className='hidden md:block'>About</p>
+            </Link>
           </li>
           <li>
-            <a
-              href='#'
-              className='p-2 px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
+            <Link
+              to='/contact'
+              className='p-2 md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
             >
-              <PhoneIcon className='w-4 h-4 text-gray-700' /> Contact
-            </a>
+              <PhoneIcon className='w-4 h-4 text-gray-700' />{' '}
+              <p className='hidden md:block'>Contact</p>
+            </Link>
           </li>
           <li>
-            <a
-              href='#'
-              className='p-2 px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
+            <Link
+              to='/cart'
+              className='p-2 md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
             >
-              <ShoppingBagIcon className='w-4 h-4 text-gray-700' /> Cart
-            </a>
+              <ShoppingBagIcon className='w-4 h-4 text-gray-700' />{' '}
+              <p className='hidden md:block'>Cart</p>
+            </Link>
           </li>
         </ul>
-        <a
-          href='#'
-          className='bg-orange-400 text-white p-2 px-4 rounded-md flex items-center gap-2'
+        <Link
+          to='/login'
+          className='ml-4 bg-orange-400 text-white p-2 px-4 rounded-md flex items-center gap-2'
         >
           Login
-        </a>
+        </Link>
       </div>
     </header>
   );
