@@ -1,12 +1,12 @@
-import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
+import useRestaurants from '../hooks/useRestaurants';
+import { GET_RESTAURANTS_URL } from '../utils/constants';
 import RestaurantList from './RestaurantList';
 
 const Body = () => {
-  const [restaurants, setRestaurants] = useState([]);
+  const { restaurants, isLoading } = useRestaurants(GET_RESTAURANTS_URL);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const serachRef = useRef();
-  const [isLoading, setIsLoading] = useState(true);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -21,36 +21,10 @@ const Body = () => {
   };
 
   useEffect(() => {
-    (async () => {
-      try {
-        setIsLoading(true);
-        const { data } = await axios(
-          `https://swiggyapiwrapper.dineshrout.repl.co/api/restaurants`
-        );
+    setFilteredRestaurants(restaurants);
+  }, [isLoading]);
 
-        console.log(
-          data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants
-        );
-
-        setRestaurants(
-          data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants
-        );
-
-        setFilteredRestaurants(
-          data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants
-        );
-      } catch (err) {
-        console.log(err.response);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
-  }, []);
-
-  console.log(isLoading, restaurants);
+  // console.log(isLoading, restaurants, filteredRestaurants);
 
   return (
     <div className='bg-[#fcfcfc] relative py-8'>

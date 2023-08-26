@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import About from './pages/About';
 import Cart from './pages/Cart';
-import Contact from './pages/Contact';
 import Error from './pages/Error';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Restaurant from './pages/Restaurant';
 import Search from './pages/Search';
 import './styles.css';
+
+const Contact = lazy(() => import('./pages/Contact'));
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'contact',
-        element: <Contact />,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Contact />
+          </Suspense>
+        ),
       },
       {
         path: 'login',

@@ -1,7 +1,7 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
 
 const RestaurantMenuItem = ({ items, index, activeIndex, setActiveIndex }) => {
-  console.log(activeIndex, index);
+  // console.log(activeIndex, index);
   return (
     <>
       <div
