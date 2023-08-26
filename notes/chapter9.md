@@ -28,3 +28,5 @@ const App = () => {
 
 export default App;
 ```
+
+Parcel does code spliting with zero configuration.
