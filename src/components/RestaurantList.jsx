@@ -1,7 +1,10 @@
-import RestaurantCard from './RestaurantCard';
+import { Link } from 'react-router-dom';
+import RestaurantCard, { withTopRatedLabel } from './RestaurantCard';
 import ShimmerCard from './ShimmerCard';
 
 const RestaurantList = ({ isLoading, restaurants }) => {
+  const RestaurantCardTopRated = withTopRatedLabel(RestaurantCard);
+
   return (
     <div className='container-max'>
       <h1 className='my-4 font-bold text-2xl text-zinc-700'>
@@ -12,7 +15,17 @@ const RestaurantList = ({ isLoading, restaurants }) => {
         {isLoading
           ? Array.from({ length: 15 }).map((_, i) => <ShimmerCard key={i} />)
           : restaurants.map((restaurant, i) => (
-              <RestaurantCard key={i} restaurant={restaurant} />
+              <Link
+                to={`/restaurants/${restaurant.info.id}`}
+                className='hover:scale-95 transition ease-in-out duration-300 relative z-10'
+                key={i}
+              >
+                {restaurant.info.avgRating >= 4.2 ? (
+                  <RestaurantCardTopRated restaurant={restaurant} />
+                ) : (
+                  <RestaurantCard restaurant={restaurant} />
+                )}
+              </Link>
             ))}
       </div>
     </div>

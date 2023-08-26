@@ -24,7 +24,7 @@ const Body = () => {
     setFilteredRestaurants(restaurants);
   }, [isLoading]);
 
-  // console.log(isLoading, restaurants, filteredRestaurants);
+  console.log(isLoading, restaurants, filteredRestaurants);
 
   return (
     <div className='bg-[#fcfcfc] relative py-8'>

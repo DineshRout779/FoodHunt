@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
+import { UserContextProvider } from './context/UserContext';
 import About from './pages/About';
 import Cart from './pages/Cart';
 import Error from './pages/Error';
@@ -58,4 +59,8 @@ const router = createBrowserRouter([
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-root.render(<RouterProvider router={router} />);
+root.render(
+  <UserContextProvider>
+    <RouterProvider router={router} />
+  </UserContextProvider>
+);

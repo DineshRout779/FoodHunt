@@ -9,15 +9,15 @@ class About extends React.Component {
       count2: 0,
     };
 
-    console.log('constructor');
+    // console.log('constructor');
   }
 
   componentDidMount() {
-    console.log('mounted');
+    // console.log('mounted');
   }
 
   render() {
-    console.log('rendered');
+    // console.log('rendered');
     return (
       <div className='container-max py-16  text-center min-h-[80vh]'>
         <img

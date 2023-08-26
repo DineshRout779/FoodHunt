@@ -4,11 +4,9 @@ import { CDN_URL } from '../utils/constants';
 
 const RestaurantCard = ({ restaurant }) => {
   const { info } = restaurant;
+
   return (
-    <Link
-      to={`/restaurants/${restaurant.info.id}`}
-      className='hover:scale-95 transition ease-in-out duration-300'
-    >
+    <>
       <div className='overlay-container'>
         <img
           src={CDN_URL + info.cloudinaryImageId}
@@ -45,8 +43,22 @@ const RestaurantCard = ({ restaurant }) => {
       </p>
 
       <p className='text-zinc-600'>{info.locality}</p>
-    </Link>
+    </>
   );
 };
 
 export default RestaurantCard;
+
+//  HOC for Top Rated Restaurants
+export const withTopRatedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div className='relative'>
+        <p className='absolute z-10 -top-2 -left-2 rounded-md p-2 px-4 bg-zinc-900 text-white text-xs'>
+          Top Rated
+        </p>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};

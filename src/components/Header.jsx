@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className='sticky top-0 bg-white z-50 py-4 border-b shadow-sm border-gray-100'>
+    <header className='sticky top-0 bg-white z-20 py-4 border-b shadow-sm border-gray-100'>
       <div className='container-max flex justify-between items-center'>
         <div className='flex items-center gap-4'>
           <Logo />
