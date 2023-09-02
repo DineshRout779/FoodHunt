@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
-import { UserContextProvider } from './context/UserContext';
 import About from './pages/About';
 import Cart from './pages/Cart';
 import Error from './pages/Error';
