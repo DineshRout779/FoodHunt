@@ -8,8 +8,14 @@ import {
   ShoppingBagIcon,
 } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectItemsInCart } from '../features/cart/cartSlice';
 
 const Header = () => {
+  const items = useSelector(selectItemsInCart);
+
+  console.log(items);
+
   return (
     <header className='sticky top-0 bg-white z-20 py-4 border-b shadow-sm border-gray-100'>
       <div className='container-max flex justify-between items-center'>
@@ -62,10 +68,15 @@ const Header = () => {
           <li>
             <Link
               to='/cart'
-              className='p-2 md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
+              className='p-2 relative md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
             >
               <ShoppingBagIcon className='w-4 h-4 text-gray-700' />{' '}
               <p className='hidden md:block'>Cart</p>
+              {
+                <p className='absolute -top-1 -right-1 bg-orange-500 text-white flex justify-center items-center w-5 h-5 text-xs rounded-full'>
+                  {items.length}
+                </p>
+              }
             </Link>
           </li>
         </ul>

@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import { UserContextProvider } from './context/UserContext';
@@ -10,6 +11,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Restaurant from './pages/Restaurant';
 import Search from './pages/Search';
+import store from './store/store';
 import './styles.css';
 
 const Contact = lazy(() => import('./pages/Contact'));
@@ -60,7 +62,7 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-  <UserContextProvider>
+  <Provider store={store}>
     <RouterProvider router={router} />
-  </UserContextProvider>
+  </Provider>
 );

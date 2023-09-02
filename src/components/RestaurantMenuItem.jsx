@@ -1,9 +1,15 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../features/cart/cartSlice';
 import { CDN_URL } from '../utils/constants';
 
 const RestaurantMenuItem = ({ items, index, activeIndex, setActiveIndex }) => {
   // console.log(activeIndex, index);
   // console.log(items?.card?.card?.itemCards);
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (item) => dispatch(addToCart(item));
+
   return (
     <>
       <div
@@ -45,7 +51,10 @@ const RestaurantMenuItem = ({ items, index, activeIndex, setActiveIndex }) => {
                   src={CDN_URL + item?.card?.info?.imageId}
                   alt=''
                 />
-                <button className='bg-white text-orange-500 hover:bg-orange-500 hover:text-white font-bold p-2 px-6 rounded-md absolute shadow-md left-[50%] -bottom-5 -translate-x-[50%]'>
+                <button
+                  onClick={() => handleAddToCart(item)}
+                  className='bg-white text-orange-500 hover:bg-orange-500 hover:text-white font-bold p-2 px-6 rounded-md absolute shadow-md left-[50%] -bottom-5 -translate-x-[50%]'
+                >
                   ADD
                 </button>
               </div>
