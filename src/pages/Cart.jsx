@@ -5,7 +5,7 @@ import CartItemList from '../components/CartItemList';
 const Cart = () => {
   const items = useSelector(selectItemsInCart);
 
-  console.log(items);
+  // console.log(items);
 
   return (
     <div className='container-max'>
