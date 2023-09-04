@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const useRestaurants = (url) => {
+  const [banners, setBanners] = useState([]);
+  const [foods, setFoods] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +14,25 @@ const useRestaurants = (url) => {
         setIsLoading(true);
         const { data } = await axios.get(url);
 
-        // console.log(data);
+        console.log(data.data);
+
+        setBanners(
+          data?.data?.cards.filter(
+            (items) => items?.card?.card?.id === 'topical_banner'
+          )[0] ||
+            data?.data?.cards.filter(
+              (items) => items?.card?.card?.id === 'topical_banner'
+            )[0]
+        );
+
+        setFoods(
+          data?.data?.cards.filter(
+            (items) => items?.card?.card?.id === 'whats_on_your_mind'
+          )[0] ||
+            data?.data?.cards.filter(
+              (items) => items?.card?.card?.id === 'whats_on_your_mind'
+            )[0]
+        );
 
         setRestaurants(
           data?.data?.cards.filter(
@@ -28,6 +48,6 @@ const useRestaurants = (url) => {
     })();
   }, []);
 
-  return { restaurants, isLoading, error };
+  return { banners, foods, restaurants, isLoading, error };
 };
 export default useRestaurants;
