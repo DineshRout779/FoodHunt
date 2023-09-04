@@ -2,3 +2,4 @@
 /dist
 .parcel-cache
 coverage
+.env

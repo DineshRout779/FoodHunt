@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Auth0Provider } from '@auth0/auth0-react';
 import App from './App';
 import About from './pages/About';
 import Cart from './pages/Cart';
@@ -61,7 +62,15 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-  <Provider store={store}>
-    <RouterProvider router={router} />
-  </Provider>
+  <Auth0Provider
+    domain={process.env.REACT_APP_DOMAIN}
+    clientId={process.env.REACT_APP_CLIENT_ID}
+    authorizationParams={{
+      redirect_uri: window.location.origin,
+    }}
+  >
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </Auth0Provider>
 );
