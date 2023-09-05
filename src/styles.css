@@ -22,10 +22,10 @@ a {
 
 @layer components {
   .container-max {
-    @apply container max-w-[1080px] w-[95%] mx-auto;
+    @apply container max-w-[1080px] w-[90%] mx-auto;
   }
   .container-md {
-    @apply container max-w-[768px] w-[95%] mx-auto;
+    @apply container max-w-[768px] w-[90%] mx-auto;
   }
   .flex-center {
     @apply flex justify-center items-center;

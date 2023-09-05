@@ -36,12 +36,12 @@ const Header = () => {
   return (
     <header className='sticky w-full top-0 bg-white z-20 py-4 border-b shadow-sm border-gray-100'>
       <div className='container-max flex justify-between items-center'>
-        <div className='flex items-center gap-4'>
+        <div className='flex items-center gap-2 md:gap-4'>
           <Logo />
 
           <button
             onClick={handleOpenModal}
-            className='text-sm flex items-center gap-1'
+            className='text-xs md:text-sm flex items-center gap-1'
           >
             <MapPinIcon className='w-4 h-4 text-gray-700' />
             Bhubaneswar, Odisha
