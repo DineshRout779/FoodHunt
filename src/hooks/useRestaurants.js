@@ -14,7 +14,7 @@ const useRestaurants = (url) => {
         setIsLoading(true);
         const { data } = await axios.get(url);
 
-        // console.log(data.data);
+        console.log(data.data);
 
         setBanners(
           data?.data?.cards.filter(

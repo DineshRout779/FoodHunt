@@ -54,3 +54,8 @@ a {
   display: flex;
   align-items: flex-end;
 }
+
+.custom-slider .slick-slide {
+  width: 100% !important;
+  display: block;
+}
