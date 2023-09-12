@@ -1,23 +1,19 @@
-import { selectItemsInCart } from '../features/cart/cartSlice';
-import { useSelector } from 'react-redux';
 import CartItemList from '../components/CartItemList';
+import OrderSummary from '../components/OrderSummary';
 
 const Cart = () => {
-  const items = useSelector(selectItemsInCart);
-
   // console.log(items);
 
   return (
-    <div className='container-max'>
+    <div className='container-max py-8 pb-16'>
       <h1 className='text-2xl my-4 font-semibold'>Cart</h1>
 
       {/* cart details */}
-
-      {/* cart items */}
-      {/* order summary */}
-
-      <div className='min-h-[80vh]'>
-        <CartItemList items={items} />
+      <div className='min-h-[60vh] pb-8 md:flex gap-4'>
+        {/* cart items */}
+        <CartItemList />
+        {/* order summary */}
+        <OrderSummary />
       </div>
     </div>
   );
