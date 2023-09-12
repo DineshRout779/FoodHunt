@@ -12,21 +12,25 @@ const RestaurantList = ({ isLoading, restaurants }) => {
       </h1>
 
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
-        {isLoading
-          ? Array.from({ length: 15 }).map((_, i) => <ShimmerCard key={i} />)
-          : restaurants.map((restaurant, i) => (
-              <Link
-                to={`/restaurants/${restaurant.info.id}`}
-                className='hover:scale-95 transition ease-in-out duration-300 relative z-10'
-                key={i}
-              >
-                {restaurant.info.avgRating >= 4.2 ? (
-                  <RestaurantCardTopRated restaurant={restaurant} />
-                ) : (
-                  <RestaurantCard restaurant={restaurant} />
-                )}
-              </Link>
-            ))}
+        {isLoading ? (
+          Array.from({ length: 15 }).map((_, i) => <ShimmerCard key={i} />)
+        ) : restaurants && restaurants?.length !== 0 ? (
+          restaurants.map((restaurant, i) => (
+            <Link
+              to={`/restaurants/${restaurant.info.id}`}
+              className='hover:scale-95 transition ease-in-out duration-300 relative z-10'
+              key={i}
+            >
+              {restaurant.info.avgRating >= 4.2 ? (
+                <RestaurantCardTopRated restaurant={restaurant} />
+              ) : (
+                <RestaurantCard restaurant={restaurant} />
+              )}
+            </Link>
+          ))
+        ) : (
+          <p>No restaurant found!</p>
+        )}
       </div>
     </div>
   );

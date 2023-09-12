@@ -1,18 +1,23 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectAddress } from '../features/address/addressSlice';
 
 const useRestaurants = (url) => {
+  const { address } = useSelector(selectAddress);
   const [banners, setBanners] = useState([]);
   const [foods, setFoods] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  console.log(address);
+
   useEffect(() => {
     (async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(url);
+        const { data } = await axios.post(url, address);
 
         console.log(data.data);
 

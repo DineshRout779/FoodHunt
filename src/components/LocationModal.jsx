@@ -1,11 +1,26 @@
 import { MapPinIcon } from '@heroicons/react/24/solid';
 import { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectAddress, setAddress } from '../features/address/addressSlice';
 import { closeLocationModal } from '../features/app/appSlice';
+import { getLocation } from '../utils/getLocaltion';
 
 const LocationModal = () => {
   const modalRef = useRef();
+  const { address } = useSelector(selectAddress);
   const dispatch = useDispatch();
+
+  const getGeoLocation = async () => {
+    try {
+      const res = await getLocation();
+
+      console.log('res: ', res);
+
+      dispatch(setAddress(res));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleModalClose = (e) => {
     if (!modalRef.current.contains(e.target)) dispatch(closeLocationModal());
@@ -23,13 +38,16 @@ const LocationModal = () => {
         <h1 className='text-2xl font-semibold '>
           Please provide your location
         </h1>
-        <button className='w-full max-w-[360px] flex justify-center items-center gap-2 border p-2 px-4 my-4 bg-gray-50  shadow-sm rounded-md'>
+        <button
+          onClick={getGeoLocation}
+          className='w-full max-w-[360px] flex justify-center items-center gap-2 border p-2 px-4 my-4 bg-gray-50  shadow-sm rounded-md'
+        >
           Access my location <MapPinIcon className='w-4 h-4' />
         </button>
 
-        <p>or, enter manually</p>
+        {/* <p>or, enter manually</p> */}
 
-        <div className='flex items-center gap-4 w-full max-w-[360px]'>
+        {/* <div className='flex items-center gap-4 w-full max-w-[360px]'>
           <input
             className='w-full grow bg-gray-50 my-4 p-2 border border-gray-400 rounded-md'
             type='text'
@@ -40,7 +58,7 @@ const LocationModal = () => {
           <button className='p-2 px-4 bg-orange-500 text-white rounded-md'>
             Save
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

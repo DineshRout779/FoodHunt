@@ -19,14 +19,14 @@ import {
   toggleMenu,
 } from '../features/app/appSlice';
 import LocationModal from './LocationModal';
+import { selectAddress } from '../features/address/addressSlice';
 
 const Header = () => {
   const { isMenuOpen, isLocationModalOpen } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
   const items = useSelector(selectItemsInCart);
-
-  // console.log(isLocationModalOpen);
+  const { address } = useSelector(selectAddress);
 
   const handleToggleMenu = () => dispatch(toggleMenu());
 
@@ -44,7 +44,7 @@ const Header = () => {
             className='text-xs md:text-sm flex items-center gap-1'
           >
             <MapPinIcon className='w-4 h-4 text-gray-700' />
-            Bhubaneswar, Odisha
+            {address?.city}
             <ChevronDownIcon className='w-4 h-4 text-orange-500' />
           </button>
         </div>
