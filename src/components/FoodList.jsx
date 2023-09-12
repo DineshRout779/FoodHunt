@@ -1,51 +1,79 @@
+import 'keen-slider/keen-slider.min.css';
 import FoodItem from './FoodItem';
+import { useKeenSlider } from 'keen-slider/react';
 import {
-  ArrowLongRightIcon,
   ArrowLongLeftIcon,
+  ArrowLongRightIcon,
 } from '@heroicons/react/24/outline';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
-const settings = {
-  className: 'center',
-  infinite: true,
-  centerPadding: '20px',
-  slidesToShow: 6,
-  swipeToSlide: true,
-};
+import { useState } from 'react';
 
 const FoodList = ({ foods }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [sliderRef, instanceRef] = useKeenSlider({
+    mode: 'free-snap',
+    renderMode: 'performance',
+    slides: {
+      perView: 6,
+    },
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+
+    breakpoints: {
+      '(min-width: 200px)': {
+        slides: { perView: 4, spacing: 5 },
+      },
+      '(min-width: 400px)': {
+        slides: { perView: 6, spacing: 10 },
+      },
+      '(min-width: 1000px)': {
+        slides: { perView: 8, spacing: 15 },
+      },
+      '(min-width: 1200px)': {
+        slides: { origin: 'auto', perView: 10, spacing: 15 },
+      },
+    },
+  });
+
   if (!foods) {
     return null;
   }
 
   return (
-    <div className='container-max my-16'>
+    <div className='container-max my-6 mt-8'>
       <div className='flex items-center justify-between'>
         <h1 className='mb-4 font-bold text-2xl text-zinc-700'>
           {foods?.card?.card?.header?.title}
         </h1>
 
-        <div className='flex gap-2 items-center'>
-          <button className='p-2 bg-gray-300 rounded-full'>
-            <ArrowLongLeftIcon className='w-4 h-4' />
-          </button>
-          <button className='p-2 bg-gray-300 rounded-full'>
-            <ArrowLongRightIcon className='w-4 h-4' />
-          </button>
-        </div>
+        {instanceRef.current && (
+          <div className='flex gap-2 items-center'>
+            <button
+              disabled={currentSlide === 0}
+              onClick={() => instanceRef.current?.prev()}
+              className='bg-gray-100 p-2 rounded-full disabled:text-gray-300'
+            >
+              <ArrowLongLeftIcon className='w-4 h-4' />{' '}
+            </button>
+            <button
+              disabled={
+                currentSlide ===
+                instanceRef?.current?.track?.details?.slides?.length - 1
+              }
+              onClick={() => instanceRef.current?.next()}
+              className='bg-gray-100 p-2 rounded-full disabled:text-gray-300'
+            >
+              <ArrowLongRightIcon className='w-4 h-4' />{' '}
+            </button>
+          </div>
+        )}
       </div>
 
-      <Slider {...settings}>
+      <div ref={sliderRef} className='keen-slider'>
         {foods?.card?.card?.gridElements?.infoWithStyle?.info?.map((food) => (
           <FoodItem food={food} key={food.id} />
         ))}
-      </Slider>
-
-      {/* <div className='flex flex-wrap'> */}
-
-      {/* </div> */}
+      </div>
     </div>
   );
 };

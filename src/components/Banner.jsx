@@ -2,11 +2,9 @@ import { CDN_URL } from '../utils/constants';
 
 const Banner = ({ banner }) => {
   return (
-    <img
-      className='block w-full max-w-[360px]'
-      src={CDN_URL + banner?.imageId}
-      alt=''
-    />
+    <div className='keen-slider__slide'>
+      <img className='block w-full' src={CDN_URL + banner?.imageId} alt='' />
+    </div>
   );
 };
 

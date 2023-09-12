@@ -3,10 +3,10 @@ import { CDN_URL } from '../utils/constants';
 
 const FoodItem = ({ food }) => {
   return (
-    <Link to='/#' key={food.id} className='pointer-events-none'>
+    <Link to='/#' key={food.id} className='keen-slider__slide'>
       <img
         src={CDN_URL + food?.imageId}
-        className='w-full max-w-[108px] pointer-events-none'
+        className='w-full pointer-events-none'
         alt=''
       />
     </Link>
