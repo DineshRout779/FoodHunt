@@ -5,9 +5,9 @@ const Logo = () => {
     <Link
       to='/'
       data-testid='logo'
-      className='text-xl md:text-2xl font-semibold'
+      className='text-xl md:text-2xl font-semibold flex items-center'
     >
-      🍔 <span className='hidden md:block'>Foody</span>
+      🍔 <span className='hidden md:block logo'>Foody</span>
     </Link>
   );
 };

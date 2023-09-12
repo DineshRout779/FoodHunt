@@ -12,25 +12,20 @@ const FoodList = ({ foods }) => {
   const [sliderRef, instanceRef] = useKeenSlider({
     mode: 'free-snap',
     renderMode: 'performance',
-    slides: {
-      perView: 6,
-    },
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
     },
+    initial: 0,
 
     breakpoints: {
-      '(min-width: 200px)': {
-        slides: { perView: 4, spacing: 5 },
+      '(max-width: 480px)': {
+        slides: { perView: 4, spacing: 10 },
       },
-      '(min-width: 400px)': {
+      '(min-width: 480px)': {
         slides: { perView: 6, spacing: 10 },
       },
-      '(min-width: 1000px)': {
-        slides: { perView: 8, spacing: 15 },
-      },
-      '(min-width: 1200px)': {
-        slides: { origin: 'auto', perView: 10, spacing: 15 },
+      '(min-width: 768px)': {
+        slides: { perView: 8, spacing: 10 },
       },
     },
   });

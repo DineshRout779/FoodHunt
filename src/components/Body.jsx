@@ -37,9 +37,9 @@ const Body = () => {
       {/* food list */}
       <FoodList foods={foods} isLoading={isLoading} />
       {/* search bar */}
-      {/* <form
+      <form
         onSubmit={handleSearch}
-        className='flex gap-4 max-w-[560px] w-[95%] mx-auto'
+        className='flex gap-4 max-w-[560px] w-[95%] mx-auto mt-6'
       >
         <input
           type='search'
@@ -55,7 +55,7 @@ const Body = () => {
         >
           Search
         </button>
-      </form> */}
+      </form>
 
       {/* restaurant list */}
 
