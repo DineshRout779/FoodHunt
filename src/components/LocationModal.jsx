@@ -1,22 +1,29 @@
 import { MapPinIcon } from '@heroicons/react/24/solid';
-import { useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectAddress, setAddress } from '../features/address/addressSlice';
+import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { setAddress } from '../features/address/addressSlice';
 import { closeLocationModal } from '../features/app/appSlice';
+import useRestaurants from '../hooks/useRestaurants';
 import { getLocation } from '../utils/getLocaltion';
+import { GET_RESTAURANTS_URL } from '../utils/constants';
 
 const LocationModal = () => {
   const modalRef = useRef();
-  const { address } = useSelector(selectAddress);
+  const { triggerGetRestaurants } = useRestaurants(GET_RESTAURANTS_URL);
   const dispatch = useDispatch();
 
   const getGeoLocation = async () => {
     try {
       const res = await getLocation();
 
-      console.log('res: ', res);
-
+      // set address
       dispatch(setAddress(res));
+
+      // close modal
+      dispatch(closeLocationModal());
+
+      // trigger fetch request
+      triggerGetRestaurants();
     } catch (error) {
       console.log(error);
     }
