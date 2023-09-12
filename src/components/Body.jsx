@@ -27,7 +27,7 @@ const Body = () => {
     setFilteredRestaurants(restaurants);
   }, [isLoading]);
 
-  console.log(banners);
+  // console.log(foods);
 
   return (
     <div className='bg-white relative py-8'>
