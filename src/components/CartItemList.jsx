@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   decreaseItemQuantity,
   increaseItemQuantity,
+  removeFromCart,
   selectItemsInCart,
 } from '../features/cart/cartSlice';
 import { CDN_URL } from '../utils/constants';
@@ -9,8 +10,8 @@ import { CDN_URL } from '../utils/constants';
 const CartItemList = () => {
   const cartItems = useSelector(selectItemsInCart);
   const dispatch = useDispatch();
-  console.log('cart items', cartItems);
 
+  const removeItem = (id) => dispatch(removeFromCart({ id }));
   const decreaseQuantity = (id) => dispatch(decreaseItemQuantity({ id }));
   const increaseQuantity = (id) => dispatch(increaseItemQuantity({ id }));
 
@@ -27,7 +28,7 @@ const CartItemList = () => {
         >
           <div className='basis-3/12'>
             <img
-              className='w-full object-cover block rounded-md aspect-square'
+              className='w-full h-full md:h-auto object-cover block rounded-md aspect-square'
               src={CDN_URL + item?.item?.card?.info?.imageId}
               alt=''
             />
@@ -59,21 +60,31 @@ const CartItemList = () => {
               </span>
             </p>
 
-            <div className='flex items-center my-2'>
+            {/* actions */}
+            <div className='flex justify-between items-center mt-2'>
+              <div className='flex items-center'>
+                <button
+                  onClick={() => decreaseQuantity(item?.item?.card?.info?.id)}
+                  className='bg-orange-500 text-white font-bold w-8 h-8 rounded-md'
+                >
+                  -
+                </button>
+                <p className='font-bold w-8 h-8 flex justify-center items-center'>
+                  {item?.quantity}
+                </p>
+                <button
+                  onClick={() => increaseQuantity(item?.item?.card?.info?.id)}
+                  className='bg-orange-500 text-white font-bold w-8 h-8 rounded-md'
+                >
+                  +
+                </button>
+              </div>
+
               <button
-                onClick={() => decreaseQuantity(item?.item?.card?.info?.id)}
-                className='bg-orange-500 text-white font-bold w-8 h-8 rounded-md'
+                onClick={() => removeItem(item?.item?.card?.info?.id)}
+                className='border border-orange-500 text-xs font-semibold text-orange-500 p-2 px-4 rounded-md'
               >
-                -
-              </button>
-              <p className='font-bold w-8 h-8 flex justify-center items-center'>
-                {item?.quantity}
-              </p>
-              <button
-                onClick={() => increaseQuantity(item?.item?.card?.info?.id)}
-                className='bg-orange-500 text-white font-bold w-8 h-8 rounded-md'
-              >
-                +
+                Remove
               </button>
             </div>
           </div>

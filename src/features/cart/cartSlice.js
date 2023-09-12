@@ -14,25 +14,22 @@ const cartSlice = createSlice({
         quantity: 1,
       });
 
-      // console.log('state: ', state);
-
-      // state.items.push(action.payload);
-
       localStorage.setItem('cart', JSON.stringify(state.items));
     },
+
     removeFromCart: (state, action) => {
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
+      state.items = state.items.filter(
+        (cartItem) => cartItem?.item?.card?.info?.id !== action.payload.id
+      );
+      localStorage.setItem('cart', JSON.stringify(state.items));
     },
+
     increaseItemQuantity: (state, action) => {
       const { id } = action.payload;
-
-      console.log('Incoming data: ', action.payload);
 
       const itemToIncrease = state.items.find(
         (cartItem) => cartItem?.item?.card?.info?.id === id
       );
-
-      console.log('item found increase: ', current(itemToIncrease));
 
       if (itemToIncrease) {
         itemToIncrease.quantity += 1;
@@ -40,13 +37,10 @@ const cartSlice = createSlice({
       }
     },
     decreaseItemQuantity: (state, action) => {
-      console.log('Incoming data: ', action.payload);
       const { id } = action.payload;
       const itemToDecrease = state.items.find(
         (cartItem) => cartItem?.item?.card?.info?.id === id
       );
-
-      console.log('item found decrease: ', current(itemToDecrease));
 
       if (itemToDecrease && itemToDecrease.quantity > 1) {
         itemToDecrease.quantity -= 1;
