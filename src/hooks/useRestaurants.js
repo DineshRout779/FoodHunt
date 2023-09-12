@@ -54,7 +54,7 @@ const useRestaurants = (url) => {
 
   useEffect(() => {
     getRestaurants();
-  }, []);
+  }, [address.city]);
 
   return {
     banners,
