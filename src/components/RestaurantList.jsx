@@ -7,7 +7,7 @@ const RestaurantList = ({ isLoading, restaurants }) => {
 
   return (
     <div className='container-max'>
-      <h1 className='my-4 font-bold text-2xl text-zinc-700'>
+      <h1 className='my-4 mt-8 font-bold text-2xl text-zinc-700'>
         Restaurants near you
       </h1>
 

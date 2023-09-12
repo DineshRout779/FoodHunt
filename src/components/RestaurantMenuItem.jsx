@@ -1,4 +1,5 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
+import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../features/cart/cartSlice';
 import { CDN_URL } from '../utils/constants';
@@ -8,7 +9,10 @@ const RestaurantMenuItem = ({ items, index, activeIndex, setActiveIndex }) => {
   // console.log(items?.card?.card?.itemCards);
   const dispatch = useDispatch();
 
-  const handleAddToCart = (item) => dispatch(addToCart(item));
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+    toast.success('Added to cart!');
+  };
 
   return (
     <>

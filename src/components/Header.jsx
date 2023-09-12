@@ -26,7 +26,7 @@ const Header = () => {
   const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
   const items = useSelector(selectItemsInCart);
 
-  console.log(isLocationModalOpen);
+  // console.log(isLocationModalOpen);
 
   const handleToggleMenu = () => dispatch(toggleMenu());
 
