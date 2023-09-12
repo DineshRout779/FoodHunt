@@ -1,5 +1,5 @@
 import Header from './components/Header';
-import Home from './pages/Home';
+import { Toaster } from 'react-hot-toast';
 import { Outlet } from 'react-router-dom';
 import Footer from './components/Footer';
 import useOnlineStatus from './hooks/useOnlineStatus';
@@ -10,6 +10,7 @@ const App = () => {
     <>
       {isOnline ? (
         <>
+          <Toaster />
           <Header />
           <Outlet />
           <Footer />
