@@ -1,11 +1,18 @@
 import Header from './components/Header';
 import { Toaster } from 'react-hot-toast';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Footer from './components/Footer';
 import useOnlineStatus from './hooks/useOnlineStatus';
+import { useLayoutEffect } from 'react';
 
 const App = () => {
+  const { pathname } = useLocation();
   const isOnline = useOnlineStatus();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <>
       {isOnline ? (
