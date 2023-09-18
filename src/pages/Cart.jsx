@@ -1,7 +1,11 @@
+import { useSelector } from 'react-redux';
 import CartItemList from '../components/CartItemList';
 import OrderSummary from '../components/OrderSummary';
+import { selectItemsInCart } from '../features/cart/cartSlice';
 
 const Cart = () => {
+  const cartItems = useSelector(selectItemsInCart);
+
   return (
     <div className='container-max py-8 pb-16'>
       <h1 className='text-2xl my-4 font-semibold'>Cart</h1>
@@ -11,7 +15,7 @@ const Cart = () => {
         {/* cart items */}
         <CartItemList />
         {/* order summary */}
-        <OrderSummary />
+        {cartItems.length !== 0 && <OrderSummary />}
       </div>
     </div>
   );

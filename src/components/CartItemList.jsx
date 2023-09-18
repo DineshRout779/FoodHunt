@@ -16,7 +16,11 @@ const CartItemList = () => {
   const increaseQuantity = (id) => dispatch(increaseItemQuantity({ id }));
 
   if (cartItems.length === 0) {
-    return <p>Your cart is empty!</p>;
+    return (
+      <div className='flex grow min-h-[60vh] justify-center items-center'>
+        <p>Your cart is empty!</p>
+      </div>
+    );
   }
 
   return (
