@@ -7,7 +7,7 @@ const Logo = () => {
       data-testid='logo'
       className='text-xl md:text-2xl font-semibold flex items-center'
     >
-      🍔 <span className='hidden md:block logo'>Foody</span>
+      🍔 <span className='hidden md:block logo'>FoodHunt</span>
     </Link>
   );
 };

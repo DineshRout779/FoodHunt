@@ -15,7 +15,7 @@ const Cart = () => {
         {/* cart items */}
         <CartItemList />
         {/* order summary */}
-        {cartItems.length !== 0 && <OrderSummary />}
+        {cartItems && cartItems.length !== 0 && <OrderSummary />}
       </div>
     </div>
   );
