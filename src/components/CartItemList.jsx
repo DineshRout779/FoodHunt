@@ -51,18 +51,17 @@ const CartItemList = () => {
                   : item?.item?.card?.info?.description}
               </p>
 
-              <p className='my-2'>
+              <p className='my-2 space-x-1'>
                 <span className='font-semibold'>
                   ₹
                   {parseFloat(
                     (
-                      item?.quantity *
-                      parseFloat(item?.item?.card?.info?.price / 100)
+                      item?.quantity * parseFloat(item?.item?.itemPrice / 100)
                     ).toFixed(2)
                   )}
                 </span>
                 <span className='text-gray-800 font-normal'>
-                  ({item?.item?.card?.info?.price / 100} × {item?.quantity})
+                  ({item?.item?.itemPrice / 100} × {item?.quantity})
                 </span>
               </p>
 
@@ -71,7 +70,10 @@ const CartItemList = () => {
                 <div className='flex items-center'>
                   <button
                     onClick={() => decreaseQuantity(item?.item?.card?.info?.id)}
-                    className='bg-orange-500 text-white font-bold w-8 h-8 rounded-md'
+                    disabled={item?.quantity === 1}
+                    className={
+                      'bg-orange-500 disabled:bg-orange-500/50 disabled:cursor-not-allowed text-white font-bold w-8 h-8 rounded-md'
+                    }
                   >
                     -
                   </button>

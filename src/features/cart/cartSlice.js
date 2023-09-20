@@ -58,7 +58,7 @@ export const selectItemsInCart = ({ cart }) => cart?.items;
 
 export const selectTotalPrice = ({ cart }) => {
   return cart?.items.reduce((total, cartItem) => {
-    return total + cartItem.item.card.info.price * cartItem.quantity;
+    return total + cartItem.item.itemPrice * cartItem.quantity;
   }, 0);
 };
 

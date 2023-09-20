@@ -32,38 +32,41 @@ const RestaurantMenuItem = ({ items, index, activeIndex, setActiveIndex }) => {
 
       {activeIndex === index && (
         <ul className='p-4'>
-          {items?.card?.card?.itemCards?.map((item, i) => (
-            <li
-              className='p-2 py-8 flex gap-8 justify-between items-center border-b'
-              key={i}
-            >
-              <div className='grow space-y-1'>
-                <h2 className='text-base font-semibold'>
-                  {item?.card?.info?.name}
-                </h2>
-                <p className='text-xs'>
-                  ₹
-                  {item?.card?.info?.price / 100 ||
-                    item?.card?.info?.defaultPrice / 100}
-                </p>
-                <p className='text-xs'>{item?.card?.info?.description}</p>
-              </div>
+          {items?.card?.card?.itemCards?.map((item, i) => {
+            const itemPrice =
+              item?.card?.info?.price || item?.card?.info?.defaultPrice;
 
-              <div className='max-w-[200px] relative'>
-                <img
-                  className='w-full h-32 aspect-video object-cover rounded-md'
-                  src={CDN_URL + item?.card?.info?.imageId}
-                  alt=''
-                />
-                <button
-                  onClick={() => handleAddToCart(item)}
-                  className='bg-white text-orange-500 hover:bg-orange-500 hover:text-white font-bold p-2 px-6 rounded-md absolute shadow-md left-[50%] -bottom-5 -translate-x-[50%]'
-                >
-                  ADD
-                </button>
-              </div>
-            </li>
-          ))}
+            return (
+              <li
+                className='p-2 py-8 flex gap-4 md:gap-8 justify-between items-center border-b'
+                key={i}
+              >
+                <div className='basis-8/12 space-y-2'>
+                  <h2 className='text-base font-semibold'>
+                    {item?.card?.info?.name}
+                  </h2>
+                  <p className='text-xs font-semibold'>₹{itemPrice / 100}</p>
+                  <p className='text-xs hidden md:block'>
+                    {item?.card?.info?.description}
+                  </p>
+                </div>
+
+                <div className='w-full basis-4/12 relative'>
+                  <img
+                    className='w-full h-32 aspect-video object-cover rounded-md'
+                    src={CDN_URL + item?.card?.info?.imageId}
+                    alt=''
+                  />
+                  <button
+                    onClick={() => handleAddToCart({ ...item, itemPrice })}
+                    className='bg-white text-orange-500 hover:bg-orange-500 hover:text-white font-bold p-2 px-6 rounded-md absolute shadow-md left-[50%] -bottom-5 -translate-x-[50%]'
+                  >
+                    ADD
+                  </button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       )}
     </>
