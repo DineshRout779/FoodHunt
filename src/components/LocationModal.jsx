@@ -1,5 +1,5 @@
-import { MapPinIcon } from '@heroicons/react/24/solid';
-import { useRef } from 'react';
+import { ArrowPathIcon, MapPinIcon } from '@heroicons/react/24/solid';
+import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setAddress } from '../features/address/addressSlice';
 import { closeLocationModal } from '../features/app/appSlice';
@@ -9,12 +9,17 @@ import { GET_RESTAURANTS_URL } from '../utils/constants';
 
 const LocationModal = () => {
   const modalRef = useRef();
+  const [isLoading, setisLoading] = useState(false);
   const { triggerGetRestaurants } = useRestaurants(GET_RESTAURANTS_URL);
   const dispatch = useDispatch();
 
   const getGeoLocation = async () => {
     try {
+      setisLoading(true);
+
       const res = await getLocation();
+
+      res && setisLoading(false);
 
       // set address
       dispatch(setAddress(res));
@@ -49,7 +54,15 @@ const LocationModal = () => {
           onClick={getGeoLocation}
           className='w-full max-w-[360px] flex justify-center items-center gap-2 border p-2 px-4 my-4 bg-gray-50  shadow-sm rounded-md'
         >
-          Access my location <MapPinIcon className='w-4 h-4' />
+          {isLoading ? (
+            <p className='flex items-center gap-2'>
+              Accessing...Please wait <ArrowPathIcon className='w-4 h-4' />
+            </p>
+          ) : (
+            <p className='flex items-center gap-2'>
+              Access my location <MapPinIcon className='w-4 h-4' />
+            </p>
+          )}
         </button>
 
         {/* <p>or, enter manually</p> */}
