@@ -13,36 +13,49 @@ const ShimmerRestaurant = () => {
       {/* Restaurant Details */}
       <div className='w-full my-4 bg-gray-200 h-16'></div>
       <div className='space-y-4'>
-        <div className='flex justify-between gap-4 items-center'>
-          <div className='space-y-2'>
-            <div className='h-4 bg-gray-100 w-[200px]'></div>
-            <div className='h-2 bg-gray-100 w-[100px]'></div>
+        <div className='flex w-full justify-between gap-4'>
+          <div className='space-y-2 grow py-4'>
+            <div className='h-4 bg-gray-100 w-[80%] rounded-md'></div>
+            <div className='h-2 bg-gray-100 w-[50%] rounded-md'></div>
+            <div className='h-2 bg-gray-100 w-[20%] rounded-md'></div>
           </div>
-          <div className='h-24 w-[200px] aspect-video bg-gray-200 rounded-md'></div>
+          <div className='h-24 w-full basis-2/12 aspect-square md:aspect-video bg-gray-200 rounded-md'></div>
         </div>
-        <div className='flex justify-between gap-4 items-center'>
-          <div className='space-y-2'>
-            <div className='h-4 bg-gray-100 w-[200px]'></div>
-            <div className='h-2 bg-gray-100 w-[100px]'></div>
+        <div className='flex w-full justify-between gap-4'>
+          <div className='space-y-2 grow py-4'>
+            <div className='h-4 bg-gray-100 w-[80%] rounded-md'></div>
+            <div className='h-2 bg-gray-100 w-[50%] rounded-md'></div>
+            <div className='h-2 bg-gray-100 w-[20%] rounded-md'></div>
           </div>
-          <div className='h-24 w-[200px] aspect-video bg-gray-200 rounded-md'></div>
+          <div className='h-24 w-full basis-2/12 aspect-square md:aspect-video bg-gray-200 rounded-md'></div>
         </div>
-        <div className='flex justify-between gap-4 items-center'>
-          <div className='space-y-2'>
-            <div className='h-4 bg-gray-100 w-[200px]'></div>
-            <div className='h-2 bg-gray-100 w-[100px]'></div>
+        <div className='flex w-full justify-between gap-4'>
+          <div className='space-y-2 grow py-4'>
+            <div className='h-4 bg-gray-100 w-[80%] rounded-md'></div>
+            <div className='h-2 bg-gray-100 w-[50%] rounded-md'></div>
+            <div className='h-2 bg-gray-100 w-[20%] rounded-md'></div>
           </div>
-          <div className='h-24 w-[200px] aspect-video bg-gray-200 rounded-md'></div>
+          <div className='h-24 w-full basis-2/12 aspect-square md:aspect-video bg-gray-200 rounded-md'></div>
         </div>
-        <div className='flex justify-between gap-4 items-center'>
-          <div className='space-y-2'>
-            <div className='h-4 bg-gray-100 w-[200px]'></div>
-            <div className='h-2 bg-gray-100 w-[100px]'></div>
+        <div className='flex w-full justify-between gap-4'>
+          <div className='space-y-2 grow py-4'>
+            <div className='h-4 bg-gray-100 w-[80%] rounded-md'></div>
+            <div className='h-2 bg-gray-100 w-[50%] rounded-md'></div>
+            <div className='h-2 bg-gray-100 w-[20%] rounded-md'></div>
           </div>
-          <div className='h-24 w-[200px] aspect-video bg-gray-200 rounded-md'></div>
+          <div className='h-24 w-full basis-2/12 aspect-square md:aspect-video bg-gray-200 rounded-md'></div>
+        </div>
+        <div className='flex w-full justify-between gap-4'>
+          <div className='space-y-2 grow py-4'>
+            <div className='h-4 bg-gray-100 w-[80%] rounded-md'></div>
+            <div className='h-2 bg-gray-100 w-[50%] rounded-md'></div>
+            <div className='h-2 bg-gray-100 w-[20%] rounded-md'></div>
+          </div>
+          <div className='h-24 w-full basis-2/12 aspect-square md:aspect-video bg-gray-200 rounded-md'></div>
         </div>
       </div>
     </div>
   );
 };
+
 export default ShimmerRestaurant;

@@ -62,7 +62,7 @@ const BannerList = ({ isLoading, banners }) => {
       </div>
 
       {isLoading ? (
-        <div className='flex gap-8 mb-8'>
+        <div className='flex gap-4 md:gap-8 mb-8'>
           {Array.from({ length: 3 }).map((_, i) => (
             <ShimmerBanner key={i} />
           ))}
