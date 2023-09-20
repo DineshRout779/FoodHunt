@@ -119,8 +119,79 @@ const Header = () => {
           </button>
         )}
 
-        {!isMenuOpen ? null : (
-          <div className='shadow-lg md:hidden absolute top-full right-0 bg-white h-screen p-4 px-8'>
+        {!isMenuOpen ? (
+          <div className='shadow-lg transition-all fixed top-full -right-[100%] bg-white h-screen p-4 px-8'>
+            <>
+              <ul className='text-zinc-700 space-y-4'>
+                <li>
+                  <Link
+                    to='/search'
+                    className='p-2 md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
+                  >
+                    <MagnifyingGlassIcon className='w-4 h-4 text-gray-700' />{' '}
+                    <p>Search</p>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to='/'
+                    className='p-2 md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
+                  >
+                    <HomeIcon className='w-4 h-4 text-gray-700' /> <p>Home</p>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to='/about'
+                    className='p-2 md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
+                  >
+                    <BuildingOfficeIcon className='w-4 h-4 text-gray-700' />{' '}
+                    <p>About</p>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to='/contact'
+                    className='p-2 md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
+                  >
+                    <PhoneIcon className='w-4 h-4 text-gray-700' />{' '}
+                    <p>Contact</p>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to='/cart'
+                    className='p-2 relative md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2'
+                  >
+                    <ShoppingBagIcon className='w-4 h-4 text-gray-700' />{' '}
+                    <p>Cart</p>
+                    {
+                      <p className='absolute -top-1 -right-1 bg-orange-500 text-white flex justify-center items-center w-5 h-5 text-xs rounded-full'>
+                        {items.length}
+                      </p>
+                    }
+                  </Link>
+                </li>
+              </ul>
+              {isLoading ? null : isAuthenticated ? (
+                <button
+                  onClick={() => loginWithRedirect()}
+                  className='ml-4 bg-orange-400 text-white p-2 px-4 rounded-md items-center gap-2 hidden md:flex'
+                >
+                  Logout{' '}
+                </button>
+              ) : (
+                <button
+                  onClick={() => loginWithRedirect()}
+                  className='ml-4 bg-orange-400 text-white p-2 px-4 rounded-md items-center gap-2 hidden md:flex'
+                >
+                  Login
+                </button>
+              )}
+            </>
+          </div>
+        ) : (
+          <div className='shadow-lg transition-all md:hidden absolute top-full right-0 bg-white h-screen p-4 px-8'>
             <>
               <ul className='text-zinc-700 space-y-4'>
                 <li>
