@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectAddress } from '../features/address/addressSlice';
+import { GET_RESTAURANTS_URL } from '../utils/constants';
 
-const useRestaurants = (url) => {
+const useRestaurants = () => {
   const { address } = useSelector(selectAddress);
   const [banners, setBanners] = useState([]);
   const [foods, setFoods] = useState([]);
@@ -18,7 +19,9 @@ const useRestaurants = (url) => {
 
     try {
       setIsLoading(true);
-      const { data } = await axios.post(url, address);
+      const { data } = await axios.post(GET_RESTAURANTS_URL, address);
+
+      // console.log('data: ', data);
 
       if (data?.data) {
         setBanners(

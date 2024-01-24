@@ -7,8 +7,7 @@ import FoodList from './FoodList';
 import RestaurantList from './RestaurantList';
 
 const Body = () => {
-  const { banners, foods, restaurants, isLoading } =
-    useRestaurants(GET_RESTAURANTS_URL);
+  const { banners, foods, restaurants, isLoading } = useRestaurants();
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const serachRef = useRef();
 

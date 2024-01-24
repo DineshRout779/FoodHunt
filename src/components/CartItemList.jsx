@@ -15,7 +15,7 @@ const CartItemList = () => {
   const decreaseQuantity = (id) => dispatch(decreaseItemQuantity({ id }));
   const increaseQuantity = (id) => dispatch(increaseItemQuantity({ id }));
 
-  console.log('cart: ', cartItems);
+  // console.log('cart: ', cartItems);
 
   if (cartItems.length === 0) {
     return (
