@@ -15,10 +15,10 @@ const Restaurant = () => {
         <ShimmerRestaurant />
       ) : (
         <>
-          <RestaurantInfo info={restaurant?.cards[0]?.card?.card?.info} />
+          <RestaurantInfo info={restaurant?.cards[2]?.card?.card?.info} />
           <RestaurantMenu
             menu={
-              restaurant?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+              restaurant?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
             }
           />
         </>
